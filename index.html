@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hacker's Haven - Your Ultimate Cybersecurity Bookstore</title>
+    
+    <!-- Import Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1a1a1a", /* Dark background color */
+              secondary: "#2563eb", /* Blue accent color */
+            },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px", /* Custom button border radius */
+            },
+          },
+        },
+      };
+    </script>
+    
+    <!-- Google Fonts Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Import Pacifico Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+    
+    <!-- Import Remix Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    
+    <style>
+      /* Ensures icon font loads correctly */
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      
+      /* Hover effect for book cards */
+      .book-card:hover { transform: translateY(-4px); }
+      
+      /* Background styling for newsletter section */
+      .newsletter-bg {
+          background: linear-gradient(45deg, rgba(26,26,26,0.9), rgba(37,99,235,0.9));
+      }
+    </style>
+  </head>
+  <body class="bg-white min-h-screen">
+    <!-- Header Section -->
+    <header class="fixed top-0 w-full bg-gradient-to-r from-purple-600 via-blue-500 to-green-500 shadow-lg z-50 transition duration-500">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="flex items-center justify-between h-16">
+            
+            <!-- Logo -->
+            <div class="flex items-center">
+              <a href="#" class="text-3xl font-['Pacifico'] text-white drop-shadow-lg animate-pulse">Hacker's Haven</a>
+            </div>
+      
+            <!-- Navigation Menu -->
+            <nav class="hidden md:flex space-x-8 text-lg">
+              <a href="hacker.html" class="text-white hover:text-yellow-300 transition duration-300 transform hover:scale-110">Home</a>
+              <a href="#" class="text-white hover:text-yellow-300 transition duration-300 transform hover:scale-110">Books</a>
+              <a href="contact.html" class="text-white hover:text-yellow-300 transition duration-300 transform hover:scale-110">Contact</a>
+              <a href="about.html" class="text-white hover:text-yellow-300 transition duration-300 transform hover:scale-110">About</a>
+            </nav>
+      
+            <!-- Search and Cart Section -->
+            <div class="flex items-center space-x-6">
+              <!-- Search Bar -->
+              <div class="relative group">
+                <input type="text" placeholder="Search books..." class="w-64 pl-10 pr-4 py-2 rounded-button border border-gray-200 focus:outline-none focus:border-yellow-300 transition duration-300">
+                <div class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 flex items-center justify-center">
+                  <i class="ri-search-line text-gray-400 group-hover:text-yellow-300 transition duration-300"></i>
+                </div>
+              </div>
+      
+            
+      
+              <!-- Dropdown with Login & Register -->
+              <div x-data="{ open: false }" class="relative">
+                <button @click="open = !open" class="w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-r from-pink-500 to-red-500 text-white shadow-lg hover:scale-110 transition duration-300 ease-in-out">
+                  <i class="ri-user-line text-xl"></i>
+                </button>
+      
+                <div x-show="open" x-transition:enter="transition ease-out duration-300 transform" x-transition:enter-start="opacity-0 scale-95 translate-y-2" x-transition:enter-end="opacity-100 scale-100 translate-y-0" x-transition:leave="transition ease-in duration-200 transform" x-transition:leave-start="opacity-100 scale-100 translate-y-0" x-transition:leave-end="opacity-0 scale-95 translate-y-2" @click.away="open = false" class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-xl overflow-hidden">
+                  <a href="login.html" class="block px-4 py-2 text-white bg-blue-500 hover:bg-blue-600 transition duration-300">Login</a>
+                  <a href="sign up.html" class="block px-4 py-2 text-white bg-green-500 hover:bg-green-600 transition duration-300">Register</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      
+      <!-- Alpine.js -->
+      <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+      
+
+    <main class="pt-16">
+      <section class="relative h-[600px] flex items-center overflow-hidden">
+        <div class="absolute inset-0">
+          <img
+            src="https://public.readdy.ai/ai/img_res/aa2f46f6baec0f707592a75cae29c68a.jpg"
+            class="w-full h-full object-cover"
+          />
+          <div
+            class="absolute inset-0 bg-gradient-to-r from-primary/90 to-transparent"
+          ></div>
+        </div>
+
+        <div class="relative max-w-7xl mx-auto px-4">
+          <div class="max-w-2xl">
+            <h1 class="text-5xl font-bold text-white mb-6">
+              Unlock the World of Ethical Hacking
+            </h1>
+            <p class="text-xl text-gray-200 mb-8">
+              Discover our curated collection of cybersecurity books to master
+              the art of ethical hacking and digital defense.
+            </p>
+            <button
+              class="bg-secondary text-white px-8 py-3 rounded-button hover:bg-secondary/90 transition-colors whitespace-nowrap"
+            >
+              Explore Books
+            </button>
+          </div>
+        </div>
+      </section>
+      <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+          <h2 class="text-3xl font-bold text-center mb-12">
+            Popular Categories
+          </h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div
+              class="bg-white p-6 rounded shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center bg-secondary/10 rounded-full mb-4"
+              >
+                <i class="ri-shield-keyhole-line text-secondary text-2xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">Ethical Hacking</h3>
+              <p class="text-gray-600">124 books</p>
+            </div>
+
+            <div
+              class="bg-white p-6 rounded shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center bg-secondary/10 rounded-full mb-4"
+              >
+                <i class="ri-bug-line text-secondary text-2xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">Penetration Testing</h3>
+              <p class="text-gray-600">98 books</p>
+            </div>
+
+            <div
+              class="bg-white p-6 rounded shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center bg-secondary/10 rounded-full mb-4"
+              >
+                <i class="ri-code-box-line text-secondary text-2xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">Programming</h3>
+              <p class="text-gray-600">156 books</p>
+            </div>
+
+            <div
+              class="bg-white p-6 rounded shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center bg-secondary/10 rounded-full mb-4"
+              >
+                <i class="ri-database-2-line text-secondary text-2xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">Network Security</h3>
+              <p class="text-gray-600">89 books</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="flex justify-between items-center mb-12">
+            <h2 class="text-3xl font-bold">Featured Books</h2>
+            <div class="flex space-x-4">
+              <button
+                class="px-4 py-2 rounded-button border border-gray-200 hover:border-secondary transition-colors whitespace-nowrap"
+              >
+                Popular
+              </button>
+              <button
+                class="px-4 py-2 rounded-button border border-gray-200 hover:border-secondary transition-colors whitespace-nowrap"
+              >
+                New Releases
+              </button>
+              <button
+                class="px-4 py-2 rounded-button border border-gray-200 hover:border-secondary transition-colors whitespace-nowrap"
+              >
+                Best Sellers
+              </button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div
+              class="book-card bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
+            >
+              <img
+                src="https://public.readdy.ai/ai/img_res/c15ec85cc4e4ce47cfae193d5b3a480d.jpg"
+                class="w-full h-48 object-cover rounded-t-lg"
+              />
+              <div class="p-4">
+                <h3 class="text-lg font-semibold mb-2">
+                  Advanced Ethical Hacking Techniques
+                </h3>
+                <p class="text-gray-600 text-sm mb-2">By Sarah Anderson</p>
+                <div class="flex items-center mb-4">
+                  <div class="flex text-yellow-400">
+                    <i class="ri-star-fill"></i>
+                    <i class="ri-star-fill"></i>
+                    <i class="ri-star-fill"></i>
+                    <i class="ri-star-fill"></i>
+                    <i class="ri-star-half-fill"></i>
+                  </div>
+                  <span class="text-sm text-gray-500 ml-2">(128)</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-xl font-bold">NRP 4999</span>
+                  <button
+                    class="bg-secondary text-white px-4 py-2 rounded-button hover:bg-secondary/90 transition-colors whitespace-nowrap"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="book-card bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
+            >
+              <img
+                src="https://public.readdy.ai/ai/img_res/c979e25574891ca60ed333478810b0a5.jpg"
+                class="w-full h-48 object-cover rounded-t-lg"
+              />
+              <div class="p-4">
+                <h3 class="text-lg font-semibold mb-2">
+                  Mastering Penetration Testing
+                </h3>
+                <p class="text-gray-600 text-sm mb-2">By Michael Chen</p>
+                <div class="flex items-center mb-4">
+                  <div class="flex text-yellow-400">
+                    <i class="ri-star-fill"></i>
+                    <i class="ri-star-fill"></i>
+                    <i class="ri-star-fill"></i>
+                    <i class="ri-star-fill"></i>
+                    <i class="ri-star-line"></i>
+                  </div>
+                  <span class="text-sm text-gray-500 ml-2">(95)</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-xl font-bold">NRP 5999</span>
+                  <button
+                    class="bg-secondary text-white px-4 py-2 rounded-button hover:bg-secondary/90 transition-colors whitespace-nowrap"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="book-card bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
+            >
+              <img
+                src="https://public.readdy.ai/ai/img_res/6300b8ffd93e7b26ccdceaa4da6a97ab.jpg"
+                class="w-full h-48 object-cover rounded-t-lg"
+              />
+              <div class="p-4">
+                <h3 class="text-lg font-semibold mb-2">
+                  Python for Cybersecurity
+                </h3>
+                <p class="text-gray-600 text-sm mb-2">By David Roberts</p>
+                <div class="flex items-center mb-4">
+                  <div class="flex text-yellow-400">
+                    <i class="ri-star-fill"></i>
+                    <i class="ri-star-fill"></i>
+                    <i class="ri-star-fill"></i>
+                    <i class="ri-star-fill"></i>
+                    <i class="ri-star-fill"></i>
+                  </div>
+                  <span class="text-sm text-gray-500 ml-2">(156)</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-xl font-bold">NRP 4499</span>
+                  <button
+                    class="bg-secondary text-white px-4 py-2 rounded-button hover:bg-secondary/90 transition-colors whitespace-nowrap"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="book-card bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
+            >
+              <img
+                src="https://public.readdy.ai/ai/img_res/7662520e064a8a1e9aa51de63a316cb4.jpg"
+                class="w-full h-48 object-cover rounded-t-lg"
+              />
+              <div class="p-4">
+                <h3 class="text-lg font-semibold mb-2">
+                  Network Defense Strategies
+                </h3>
+                <p class="text-gray-600 text-sm mb-2">By Emily Parker</p>
+                <div class="flex items-center mb-4">
+                  <div class="flex text-yellow-400">
+                    <i class="ri-star-fill"></i>
+                    <i class="ri-star-fill"></i>
+                    <i class="ri-star-fill"></i>
+                    <i class="ri-star-fill"></i>
+                    <i class="ri-star-half-fill"></i>
+                  </div>
+                  <span class="text-sm text-gray-500 ml-2">(82)</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-xl font-bold">NRP 5499</span>
+                  <button
+                    class="bg-secondary text-white px-4 py-2 rounded-button hover:bg-secondary/90 transition-colors whitespace-nowrap"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+          <h2 class="text-3xl font-bold text-center mb-12">
+            Latest from Our Blog
+          </h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <article class="bg-white rounded-lg shadow-sm overflow-hidden">
+              <img
+                src="https://public.readdy.ai/ai/img_res/4f4ea211a34cd323d4751869228e1059.jpg"
+                class="w-full h-48 object-cover"
+              />
+              <div class="p-6">
+                <div class="flex items-center text-sm text-gray-500 mb-4">
+                  <i class="ri-time-line mr-2"></i>
+                  <span>5 min read</span>
+                  <span class="mx-2">•</span>
+                  <span>Feb 18, 2025</span>
+                </div>
+                <h3 class="text-xl font-semibold mb-3">
+                  Top 10 Cybersecurity Trends in 2025
+                </h3>
+                <p class="text-gray-600 mb-4">
+                  Explore the latest trends shaping the cybersecurity landscape
+                  and learn how to stay ahead of emerging threats.
+                </p>
+                <a
+                  href="#"
+                  class="text-secondary hover:text-secondary/90 font-medium"
+                  >Read More →</a
+                >
+              </div>
+            </article>
+
+            <article class="bg-white rounded-lg shadow-sm overflow-hidden">
+              <img
+                src="https://public.readdy.ai/ai/img_res/413d9a0de462bec9bfb7ead62750312b.jpg"
+                class="w-full h-48 object-cover"
+              />
+              <div class="p-6">
+                <div class="flex items-center text-sm text-gray-500 mb-4">
+                  <i class="ri-time-line mr-2"></i>
+                  <span>8 min read</span>
+                  <span class="mx-2">•</span>
+                  <span>Feb 15, 2025</span>
+                </div>
+                <h3 class="text-xl font-semibold mb-3">
+                  Ethical Hacking: Getting Started Guide
+                </h3>
+                <p class="text-gray-600 mb-4">
+                  Learn the fundamentals of ethical hacking and start your
+                  journey towards becoming a certified security professional.
+                </p>
+                <a
+                  href="#"
+                  class="text-secondary hover:text-secondary/90 font-medium"
+                  >Read More →</a
+                >
+              </div>
+            </article>
+
+            <article class="bg-white rounded-lg shadow-sm overflow-hidden">
+              <img
+                src="https://public.readdy.ai/ai/img_res/c6e8eef822b40e7ebc9d5e30ab88f7f0.jpg"
+                class="w-full h-48 object-cover"
+              />
+              <div class="p-6">
+                <div class="flex items-center text-sm text-gray-500 mb-4">
+                  <i class="ri-time-line mr-2"></i>
+                  <span>6 min read</span>
+                  <span class="mx-2">•</span>
+                  <span>Feb 12, 2025</span>
+                </div>
+                <h3 class="text-xl font-semibold mb-3">
+                  Python Scripts for Security Testing
+                </h3>
+                <p class="text-gray-600 mb-4">
+                  Discover powerful Python scripts that can enhance your
+                  security testing toolkit and automate common tasks.
+                </p>
+                <a
+                  href="#"
+                  class="text-secondary hover:text-secondary/90 font-medium"
+                  >Read More →</a
+                >
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="newsletter-bg py-16">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+          <h2 class="text-3xl font-bold text-white mb-4">
+            Stay Updated with Latest Security Insights
+          </h2>
+          <p class="text-gray-200 mb-8 max-w-2xl mx-auto">
+            Subscribe to our newsletter and receive exclusive content, early
+            access to new books, and special offers.
+          </p>
+
+          <form class="max-w-md mx-auto flex gap-4">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              class="flex-1 px-4 py-3 rounded-button border-none focus:outline-none focus:ring-2 focus:ring-secondary"
+            />
+            <button
+              type="submit"
+              class="bg-secondary text-white px-6 py-3 rounded-button hover:bg-secondary/90 transition-colors whitespace-nowrap"
+            >
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+    <footer class="bg-gray-900 text-gray-400 py-12">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div>
+            <h3 class="text-xl font-bold text-white mb-4">About Us</h3>
+            <p class="mb-4">
+              Hacker's Haven is your trusted source for cybersecurity education
+              and professional development resources.
+            </p>
+            <div class="flex space-x-4">
+              <a href="#" class="hover:text-white">
+                <i class="ri-twitter-fill text-xl"></i>
+              </a>
+              <a href="#" class="hover:text-white">
+                <i class="ri-linkedin-fill text-xl"></i>
+              </a>
+              <a href="#" class="hover:text-white">
+                <i class="ri-github-fill text-xl"></i>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-bold text-white mb-4">Quick Links</h3>
+            <ul class="space-y-2">
+              <li><a href="hacker.html" class="hover:text-white">Home</a></li>
+              <li><a href="#" class="hover:text-white">Books</a></li>
+              <li><a href="about.html" class="hover:text-white">About Us</a></li>
+              <li><a href="contact.html" class="hover:text-white">Contact</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-bold text-white mb-4">Customer Service</h3>
+            <ul class="space-y-2">
+              <li><a href="#" class="hover:text-white">Shipping Policy</a></li>
+              <li>
+                <a href="#" class="hover:text-white">Returns & Refunds</a>
+              </li>
+              <li><a href="#" class="hover:text-white">FAQ</a></li>
+              <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-bold text-white mb-4">Contact Info</h3>
+            <ul class="space-y-2">
+              <li class="flex items-center">
+                <i class="ri-mail-line mr-2"></i>
+                support@hackerprashant.com
+              </li>
+              <li class="flex items-center">
+                <i class="ri-phone-line mr-2"></i>
+                +977 9800000000
+              </li>
+              <li class="flex items-center">
+                <i class="ri-map-pin-line mr-2"></i>
+                123 Security St, Cyber City
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          class="mt-12 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center"
+        >
+          <p>&copy; 2025 Hacker's Haven. All rights reserved.</p>
+
+          <div class="flex items-center space-x-4 mt-4 md:mt-0">
+            <img
+              src="https://public.readdy.ai/ai/img_res/eb08e8d6221c8d643bcd6520707304ef.jpg"
+              class="h-6"
+              alt="Visa"
+            />
+            <img
+              src="https://public.readdy.ai/ai/img_res/243f26b99ac3858de6027afe147085b2.jpg"
+              class="h-6"
+              alt="Mastercard"
+            />
+            <img
+              src="https://public.readdy.ai/ai/img_res/c6194d86c3c1a0211e3ae3bb804090ac.jpg"
+              class="h-6"
+              alt="PayPal"
+            />
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const cart = {
+          items: [],
+          total: 0,
+        };
+
+        document.querySelectorAll(".book-card button").forEach((button) => {
+          button.addEventListener("click", function () {
+            const card = this.closest(".book-card");
+            const title = card.querySelector("h3").textContent;
+            const price = parseFloat(
+              card.querySelector(".font-bold").textContent.replace("$", ""),
+            );
+
+            cart.items.push({ title, price });
+            cart.total += price;
+
+            document.querySelector(".ri-shopping-cart-line + span").textContent =
+              cart.items.length;
+
+            const notification = document.createElement("div");
+            notification.className =
+              "fixed top-20 right-4 bg-green-500 text-white px-6 py-3 rounded shadow-lg transform transition-transform duration-500 translate-x-full";
+            notification.textContent = "Added to cart successfully!";
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+              notification.style.transform = "translateX(0)";
+            }, 100);
+
+            setTimeout(() => {
+              notification.style.transform = "translateX(100%)";
+              setTimeout(() => notification.remove(), 500);
+            }, 3000);
+          });
+        });
+        const newsletterForm = document.querySelector("form");
+        newsletterForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+          const email = this.querySelector('input[type="email"]').value;
+
+          if (email) {
+            const notification = document.createElement("div");
+            notification.className =
+              "fixed top-20 right-4 bg-green-500 text-white px-6 py-3 rounded shadow-lg transform transition-transform duration-500 translate-x-full";
+            notification.textContent = "Thank you for subscribing!";
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+              notification.style.transform = "translateX(0)";
+            }, 100);
+
+            setTimeout(() => {
+              notification.style.transform = "translateX(100%)";
+              setTimeout(() => notification.remove(), 500);
+            }, 3000);
+
+            this.reset();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hacker's Haven - Your Ultimate Cybersecurity Bookstore</title>
+    
+    <!-- Import Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1a1a1a", /* Dark background color */
+              secondary: "#2563eb", /* Blue accent color */
+            },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px", /* Custom button border radius */
+            },
+          },
+        },
+      };
+    </script>
+    
+    <!-- Google Fonts Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Import Pacifico Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+    
+    <!-- Import Remix Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    
+    <style>
+      /* Ensures icon font loads correctly */
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      
+      /* Hover effect for book cards */
+      .book-card:hover { transform: translateY(-4px); }
+      
+      /* Background styling for newsletter section */
+      .newsletter-bg {
+          background: linear-gradient(45deg, rgba(26,26,26,0.9), rgba(37,99,235,0.9));
+      }
+    </style>
+  </head>
+  <body class="bg-white min-h-screen">
+    <!-- Header Section -->
+    <header class="fixed top-0 w-full bg-gradient-to-r from-purple-600 via-blue-500 to-green-500 shadow-lg z-50 transition duration-500">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="flex items-center justify-between h-16">
+            
+            <!-- Logo -->
+            <div class="flex items-center">
+              <a href="#" class="text-3xl font-['Pacifico'] text-white drop-shadow-lg animate-pulse">Hacker's Haven</a>
+            </div>
+      
+            <!-- Navigation Menu -->
+            <nav class="hidden md:flex space-x-8 text-lg">
+              <a href="hacker.html" class="text-white hover:text-yellow-300 transition duration-300 transform hover:scale-110">Home</a>
+              <a href="#" class="text-white hover:text-yellow-300 transition duration-300 transform hover:scale-110">Books</a>
+              <a href="contact.html" class="text-white hover:text-yellow-300 transition duration-300 transform hover:scale-110">Contact</a>
+              <a href="about.html" class="text-white hover:text-yellow-300 transition duration-300 transform hover:scale-110">About</a>
+            </nav>
+      
+            <!-- Search and Cart Section -->
+            <div class="flex items-center space-x-6">
+              <!-- Search Bar -->
+              <div class="relative group">
+                <input type="text" placeholder="Search books..." class="w-64 pl-10 pr-4 py-2 rounded-button border border-gray-200 focus:outline-none focus:border-yellow-300 transition duration-300">
+                <div class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 flex items-center justify-center">
+                  <i class="ri-search-line text-gray-400 group-hover:text-yellow-300 transition duration-300"></i>
+                </div>
+              </div>
+      
+            
+      
+              <!-- Dropdown with Login & Register -->
+              <div x-data="{ open: false }" class="relative">
+                <button @click="open = !open" class="w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-r from-pink-500 to-red-500 text-white shadow-lg hover:scale-110 transition duration-300 ease-in-out">
+                  <i class="ri-user-line text-xl"></i>
+                </button>
+      
+                <div x-show="open" x-transition:enter="transition ease-out duration-300 transform" x-transition:enter-start="opacity-0 scale-95 translate-y-2" x-transition:enter-end="opacity-100 scale-100 translate-y-0" x-transition:leave="transition ease-in duration-200 transform" x-transition:leave-start="opacity-100 scale-100 translate-y-0" x-transition:leave-end="opacity-0 scale-95 translate-y-2" @click.away="open = false" class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-xl overflow-hidden">
+                  <a href="login.html" class="block px-4 py-2 text-white bg-blue-500 hover:bg-blue-600 transition duration-300">Login</a>
+                  <a href="sign up.html" class="block px-4 py-2 text-white bg-green-500 hover:bg-green-600 transition duration-300">Register</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      
+      <!-- Alpine.js -->
+      <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+      <br> <br>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+        }
+
+        .about-us {
+            background: linear-gradient(135deg, #6b6bff, #ff6b6b);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin: 20px 0;
+            text-decoration: underline;
+        }
+
+        .store-name {
+            font-weight: bold;
+            color: #ffeb3b;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        ul li {
+            padding: 10px 0;
+            font-size: 1.2rem;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+    
+</head>
+<body>
+    <section class="about-us">
+        <div class="container">
+            <h1>About Us</h1>
+            <p>Welcome to <span class="store-name">Hacking Sotre </span>!</p>
+            <p>At <span class="store-name">Hacing </span>, we are passionate about empowering individuals with the knowledge and skills needed to navigate the ever-evolving world of cybersecurity.</p>
+            <p>Founded by a team of seasoned professionals, our mission is to provide high-quality resources for aspiring ethical hackers, security enthusiasts, and anyone interested in learning about cybersecurity.</p>
+            <h2>Our Collection</h2>
+            <ul>
+                <li>Ethical Hacking</li>
+                <li>Cybersecurity Fundamentals</li>
+                <li>Advanced Techniques</li>
+            </ul>
+            <h2>Our Commitment</h2>
+            <p>We believe in the importance of education and continuous learning. That’s why we strive to provide the best resources available.</p>
+            <h2>Join Our Community</h2>
+            <p>Stay updated with the latest trends in cybersecurity by following us on social media and signing up for our newsletter.</p>
+            <p>Thank you for choosing <span class="store-name">Hacking Store </span>. Together, let’s unlock the secrets of hacking and cybersecurity!</p>
+        </div>
+    </section>
+</body>
+</html>
