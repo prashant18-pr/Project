@@ -174,9 +174,9 @@ $conn->close();
             </div>
             <!-- Navigation Menu -->
             <nav class="hidden md:flex space-x-8 text-lg">
-              <a href="hacker.html" class="text-white hover:text-yellow-300 transition duration-300 transform hover:scale-110">Home</a>
+              <a href="index.html" class="text-white hover:text-yellow-300 transition duration-300 transform hover:scale-110">Home</a>
               <a href="#" class="text-white hover:text-yellow-300 transition duration-300 transform hover:scale-110">Books</a>
-              <a href="#" class="text-white hover:text-yellow-300 transition duration-300 transform hover:scale-110">Contact</a>
+              <a href="contact.php" class="text-white hover:text-yellow-300 transition duration-300 transform hover:scale-110">Contact</a>
               <a href="about.html" class="text-white hover:text-yellow-300 transition duration-300 transform hover:scale-110">About</a>
             </nav>
             <!-- Search and Cart Section -->
@@ -194,8 +194,8 @@ $conn->close();
                   <i class="ri-user-line text-xl"></i>
                 </button>
                 <div x-show="open" x-transition:enter="transition ease-out duration-300 transform" x-transition:enter-start="opacity-0 scale-95 translate-y-2" x-transition:enter-end="opacity-100 scale-100 translate-y-0" x-transition:leave="transition ease-in duration-200 transform" x-transition:leave-start="opacity-100 scale-100 translate-y-0" x-transition:leave="opacity-0 scale-95 translate-y-2" @click.away="open = false" class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-xl overflow-hidden">
-                  <a href="login.html" class="block px-4 py-2 text-white bg-blue-500 hover:bg-blue-600 transition duration-300">Login</a>
-                  <a href="sign up.html" class="block px-4 py-2 text-white bg-green-500 hover:bg-green-600 transition duration-300">Register</a>
+                  <a href="login.php" class="block px-4 py-2 text-white bg-blue-500 hover:bg-blue-600 transition duration-300">Login</a>
+                  <a href="sign up.php" class="block px-4 py-2 text-white bg-green-500 hover:bg-green-600 transition duration-300">Register</a>
                 </div>
               </div>
             </div>
@@ -275,7 +275,7 @@ $conn->close();
                     </div>
                     <button type="submit" class="btn btn-primary w-100">Login</button>
                   </form>
-                  <p class="mt-3">Don't have an account? <a href="sign up.html" class="text-white">Sign Up</a></p>
+                  <p class="mt-3">Don't have an account? <a href="sign up.php" class="text-white">Sign Up</a></p>
                 </div>
               </div>
             </div>
